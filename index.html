@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script type='text/javascript' src='jquery-3.4.1.min.js'></script>
+
+<div class="container mt-4">
+    <h4>Formulário</h4>
+    <form method="POST" id="addform">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input  class="form-control" id="nome" name="nome">
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input  class="form-control" id="empresa" name="empresa">
+        </div>
+        <button  class="btn btn-primary" onclick="Submit('1');" value="php">Cadastrar PHP</button>
+        <button  class="btn btn-primary" onclick="Submit('2');" value="js">Cadastrar Ajax</button>
+      </form>
+</div>
+
+<script>
+
+  function Submit(pcaminho){
+    console.log(pcaminho);
+  
+  if(pcaminho=1){
+  document.forms[0].action = "envio.php";
+  } 
+  if(pcaminho=2){
+    
+    $('#saveaddproduct').submit(function(){ 	
+            var nome=$('#nome').val();	
+            var empresa=$('#empresa').val();	
+        
+            $.ajax({			
+                url:"envio.php",		
+                data: "funcao=insert"+"&nome="+nome+"&empresa="+empresa,	
+            })
+            return false;
+        })
+
+  }
+  
+  }
+  
+  </script>
+</html>
+
